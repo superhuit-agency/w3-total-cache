@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: boldgrid, fredericktownes, maxicusc, gidomanders, bwmarkle, harryjackson1221, joemoto, vmarko, jacobd91
-Tags: seo, cache, CDN, pagespeed, caching, performance, compression, optimize, cloudflare, nginx, apache, varnish, redis, aws, amazon web services, s3, cloudfront,  azure 
+Tags: seo, cache, CDN, pagespeed, caching, performance, compression, optimize, cloudflare, nginx, apache, varnish, redis, aws, amazon web services, s3, cloudfront, azure
 Requires at least: 3.8
-Tested up to: 5.8
-Stable tag: 2.2.0
+Tested up to: 6.0
+Stable tag: 2.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,7 +63,7 @@ https://youtu.be/7AsNSSrZq4Y
 * Reverse proxy integration via Nginx or Varnish
 * Image Service API extension provides WebP image format conversion from common image formats (on upload and on demand)
 
-Speed up your site tremendously, improve core web vitals and the overall user experience for your visitors without having to change your WordPress host, theme, plugins or your content production workflow. 
+Speed up your site tremendously, improve core web vitals and the overall user experience for your visitors without having to change your WordPress host, theme, plugins or your content production workflow.
 
 == Frequently Asked Questions ==
 
@@ -157,7 +157,7 @@ Use the "Help" button available on the Minify settings tab. Once open, the tool 
 
 = I don't understand what a CDN has to do with caching, that's completely different, no? =
 
-Technically no, a CDN is a high performance cache that stores static assets (your theme files, media library etc) in various locations throughout the world in order to provide low latency access to them by readers in those regions. Use Total Cache to accelerate your site by putting your content closer to your users with our many CDN integrations including Cloudflare, StackPath, AWS and more. 
+Technically no, a CDN is a high performance cache that stores static assets (your theme files, media library etc) in various locations throughout the world in order to provide low latency access to them by readers in those regions. Use Total Cache to accelerate your site by putting your content closer to your users with our many CDN integrations including Cloudflare, StackPath, AWS and more.
 
 = How do I use an Origin Pull (Mirror) CDN? =
 Login to your CDN providers control panel or account management area. Following any set up steps they provide, create a new "pull zone" or "bucket" for your site's domain name. If there's a set up wizard or any troubleshooting tips your provider offers, be sure to review them. In the CDN tab of the plugin, enter the hostname your CDN provider provided in the "replace site's hostname with" field. You should always do a quick check by opening a test file from the CDN hostname, e.g. http://cdn.domain.com/favicon.ico. Troubleshoot with your CDN provider until this test is successful.
@@ -216,7 +216,7 @@ First, make sure the plugin is not active (disabled) network-wide. Then make sur
 
 = A notification about file owner appears along with an FTP form, how can I resolve this? =
 
-The plugin uses WordPress FileSystem functionality to write to files. It checks if the file owner, file owner group of created files match process owner. If this is not the case it cannot write or modify files. 
+The plugin uses WordPress FileSystem functionality to write to files. It checks if the file owner, file owner group of created files match process owner. If this is not the case it cannot write or modify files.
 
 Typically, you should tell your web host about the permission issue and they should be able to resolve it.
 
@@ -284,6 +284,64 @@ It's quite difficult to recall all of the innovators that have shared their thou
 Please reach out to all of these people and support their projects if you're so inclined.
 
 == Changelog ==
+
+= 2.2.4 =
+* Fix: Extensions URL in settings
+* Fix: Redis undefined array key warnings
+* Fix: Redis connect issue based on phpredis version
+* Fix: Sanitization of licensing messages
+* Fix: DB cache error in Ajax
+* Fix: Call to undefined function in DB cache query class
+* Fix: PHP 8 compatibility: join
+* Fix: WooCommerce Variation Image Gallery plugin CDN filter
+* Enhancement: Add setting for AWS S3 public objects in ACL
+* Enhancement: Check if post is empty before cache flush
+* Enhancement: Add max lifetime setting for non-disk page cache
+* Enhancement: Add notice when selecting CDN using CloudFront
+* Update: CSS Tidy 1.7.3 => 2.0.1
+* Update: Add sns-message-validator
+* Security: Ensure cache writes in cache folders
+
+= 2.2.3 =
+* Fix: Redis Cache: Removed exception on warnings
+* Fix: Compatibility check for WP_CACHE
+* Fix: Flush all cache cache except Cloudflare button
+* Fix: License terms update notice escaping
+* Fix: Feature Showcase: Image Service activate button
+* Security: Updated guzzlehttp/guzzle to 6.5.8
+
+= 2.2.2 =
+* Security: PHPCS and WPCS updates
+* Security: Updated guzzlehttp/guzzle to 6.5.6
+* Security: Updated guzzlehttp/psr7 to 1.8.5
+* Fix: Cloudflare flush all cache
+* Fix: Access log test
+* Fix: Better handling for PHP 5.6
+* Fix: Convert Redis warnings to exceptions
+* Fix: WordPress 5.5 image lazy loading
+* Fix: Infinite loop when using database cluster configuration
+* Fix: Database cluster logic
+* Fix: FTP credentials form
+* Fix: Preview deploy button
+* Fix: Image Service links in multisite network admin
+* Fix: Enable Image Service settings changes in multisite blog/sub sites
+* Enhancement: Updated Cloudflare settings to allow a global API key or token
+* Enhancement: Added Cloudflare CDN public objects option to settings
+* Enhancement: Added timeout settings for Redis
+* Enhancement: Added TLS/SSL certificate verification option for Redis
+* Enhancement: Added Image Service visibility option
+* Enhancement: Updated Image Service limit notification
+* Enhancement: Better handling of trailing slash URLs
+* Update: Adjusted lightbox for accessibility
+* Update: Removed deprecated opcache flush
+
+= 2.2.1 =
+* Fix: Cloudflare: Removed use of the retired ip_lkup V1 endpoint
+* Fix: Prevent error in some environments using non-direct filesystems
+* Fix: Added better checking for some filesystem actions
+* Fix: AWS CloudFront: Reverted async change for cache invalidation to honor promises
+* Enhancement: Added option to exclude minified JS files from being processed by Rocket Loader
+* Enhancement: Improved handling of Image Service rate-limiting and error messages
 
 = 2.2.0 =
 * Feature: Image Service API extension: WebP conversion options
