@@ -276,8 +276,9 @@ class Varnish_Flush {
 	 * @throws \Exception Not explicitly thrown, but relies on `_purge` for error handling.
 	 */
 	private function do_flush() {
+		// note: we use get_site_url() instead of get_home_url() because when wpml is active & configured to use subfolders, it filters get_home_url() to append the language so you could end up with https://website.com/en//.*
 		if ( ! is_network_admin() ) {
-			$full_urls = array( get_home_url() . '/.*' );
+			$full_urls = array( get_site_url() . '/.*' );
 			$full_urls = Util_PageUrls::complement_with_mirror_urls( $full_urls );
 
 			foreach ( $full_urls as $url ) {
